@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ahmed Abdelrahim Abdelatif | Dental Surgeon & Portfolio</title>
+    <meta name="description" content="Official Clinical Portfolio of Dr. Ahmed Abdelrahim Abdelatif - General Practitioner Dentist & Dental Surgeon (B.D.S. Sinai University Class of 2025).">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="overflow-hidden">
+
+    <!-- ══════════════════════════════════════
+         FULL-SCREEN LOGO SPLASH INTRO
+    ══════════════════════════════════════ -->
+    <div id="splash-screen" class="splash-overlay">
+        <div class="splash-logo-container">
+            <div class="splash-logo-ring"></div>
+            <div class="splash-logo-ring-outer"></div>
+            <img src="assets/img/logo-Photoroom(1).png" alt="Dr. Ahmed Abdelrahim Abdelatif Logo" class="splash-logo-img" />
+        </div>
+        <h1 class="splash-title">Dr. Ahmed Abdelrahim</h1>
+        <p class="splash-subtitle">Dental Surgeon • Clinical Portfolio</p>
+        <div class="splash-loader-bar">
+            <div id="splash-progress" class="splash-loader-progress"></div>
+        </div>
+        <div class="splash-scroll-prompt">Scroll or Wait to Enter ↓</div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         NAVBAR
+    ══════════════════════════════════════ -->
+    <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 clean-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Brand -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl overflow-hidden border border-sky-400/30 shadow-md bg-slate-900/80 p-0.5 flex items-center justify-center transition-transform group-hover:scale-105">
+                        <img src="assets/img/logo-Photoroom(1).png" alt="Dr. Ahmed Abdelrahim Logo" class="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-white leading-tight">Dr. Ahmed Abdelrahim</div>
+                        <div class="text-[10px] text-sky-400 font-semibold tracking-wide">Dental Surgeon • B.D.S.</div>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#competencies" class="nav-link">Clinical Skills</a>
+                    <a href="#cases" class="nav-link">Cases</a>
+                    <a href="#education" class="nav-link">Education</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <!-- CTA + Hamburger -->
+                <div class="flex items-center gap-4">
+                    <a href="#contact" class="hidden md:inline-flex nav-cta">
+                        Book Consultation
+                    </a>
+                    <!-- Hamburger -->
+                    <button id="hamburger-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu">
+            <div class="max-w-7xl mx-auto px-4 pb-6 pt-2 flex flex-col gap-3">
+                <a href="#about" class="nav-link py-2 text-sm border-b border-white/10">About</a>
+                <a href="#competencies" class="nav-link py-2 text-sm border-b border-white/10">Clinical Skills</a>
+                <a href="#cases" class="nav-link py-2 text-sm border-b border-white/10">Cases</a>
+                <a href="#education" class="nav-link py-2 text-sm border-b border-white/10">Education</a>
+                <a href="#contact" class="nav-link py-2 text-sm border-b border-white/10">Contact</a>
+                <a href="#contact" class="nav-cta text-center mt-2">Book Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════
+         HERO SECTION
+    ══════════════════════════════════════ -->
+    <section class="hero-section">
+        <!-- Orbs -->
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+
+        <!-- Particles -->
+        <div class="particles-container" id="particles-container"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+                <!-- Left: Content -->
+                <div class="lg:col-span-7 space-y-8">
+
+                    <!-- Badge -->
+                    <div>
+                        <span class="hero-badge">
+                            <span class="pulse-dot"></span>
+                            Sinai University Graduate (Class of 2025) · MOH Intern
+                        </span>
+                    </div>
+
+                    <!-- Heading -->
+                    <div class="hero-stats-grid">
+                        <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl">
+                            Dr. Ahmed<br>
+                            <span class="gradient-name">Abdelrahim</span>
+                        </h1>
+                        <p class="mt-3 text-lg sm:text-xl text-sky-400 font-semibold tracking-wide">General Practitioner Dentist</p>
+                    </div>
+
+                    <!-- Subtitle -->
+                    <p class="hero-subtitle text-base sm:text-lg leading-relaxed max-w-xl">
+                        Dedicated Dental Surgeon specializing in Endodontic Root Canal Therapy, Aesthetic Composite Restorations, Oral Surgery, and Fixed Prosthodontics — with strict adherence to international sterilization standards.
+                    </p>
+
+                    <!-- Stats -->
+                    <div class="hero-stats-grid grid grid-cols-3 gap-4 max-w-md">
+                        <div class="hero-stat-card">
+                            <div class="hero-stat-value">B.D.S.</div>
+                            <div class="hero-stat-label">Class of 2025</div>
+                        </div>
+                        <div class="hero-stat-card">
+                            <div class="hero-stat-value">2025–26</div>
+                            <div class="hero-stat-label">MOH Internship</div>
+                        </div>
+                        <div class="hero-stat-card">
+                            <div class="hero-stat-value">8+</div>
+                            <div class="hero-stat-label">Clinical Skills</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-cta-group flex flex-wrap gap-4">
+                        <a href="#cases" class="btn-primary">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Inspect Clinical Cases
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                            Contact Doctor
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Right: Photo -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="hero-photo-card w-full max-w-sm">
+                        <div class="relative">
+                            <div class="hero-photo-ring"></div>
+                            <div class="hero-photo-frame">
+                                <div class="rounded-xl overflow-hidden aspect-[4/5]">
+                                    <img src="assets/img/dr_ahmed.jpg"
+                                         alt="Dr. Ahmed Abdelrahim Abdelatif"
+                                         class="w-full h-full object-cover object-center" />
+                                </div>
+                            </div>
+                            <div class="hero-photo-badge">
+                                <div class="text-white font-bold text-sm text-center">Dr. Ahmed Abdelrahim Abdelatif</div>
+                                <div class="text-sky-400 text-xs font-medium text-center mt-0.5">Dental Surgeon · Surgical Loupes & Clinical Practice</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/30 text-xs z-10">
+            <span class="tracking-widest font-medium uppercase" style="font-size:0.6rem;">Scroll</span>
+            <div class="w-px h-8 bg-gradient-to-b from-sky-400/60 to-transparent animate-pulse"></div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         ABOUT SECTION — PILLARS LAYOUT
+    ══════════════════════════════════════ -->
+    <section id="about" class="about-pillars-section py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-14 reveal">
+                <div class="section-eyebrow justify-center">Professional Summary</div>
+                <h2 class="section-title">Clinical Background &amp; Practice Philosophy</h2>
+            </div>
+
+            <!-- Stat Cards Row -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12 reveal reveal-delay-1">
+                <div class="about-stat-card">
+                    <div class="about-stat-number">B.D.S.</div>
+                    <div class="about-stat-label">Dental Degree</div>
+                </div>
+                <div class="about-stat-card">
+                    <div class="about-stat-number">5+</div>
+                    <div class="about-stat-label">Years Training</div>
+                </div>
+                <div class="about-stat-card">
+                    <div class="about-stat-number">8+</div>
+                    <div class="about-stat-label">Clinical Skills</div>
+                </div>
+                <div class="about-stat-card">
+                    <div class="about-stat-number">MOH</div>
+                    <div class="about-stat-label">Certified Intern</div>
+                </div>
+            </div>
+
+            <!-- Bio + Philosophy -->
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+
+                <!-- Bio quote (left) -->
+                <div class="lg:col-span-2 reveal reveal-delay-2">
+                    <div class="about-quote mb-5">
+                        <p class="text-slate-700 text-base leading-relaxed font-medium italic">
+                            "Dedicated to delivering precise, patient-centered dental care — where clinical excellence meets compassionate treatment."
+                        </p>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Class of 2025 graduate from <strong class="text-sky-700">Sinai University (Kantara Campus)</strong>. Extensive hands-on experience across outpatient university clinics and Ministry of Health hospitals, covering endodontics, oral surgery, restorative, and cosmetic dentistry.
+                    </p>
+                </div>
+
+                <!-- Philosophy Pillars (right) -->
+                <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4 reveal reveal-delay-3">
+
+                    <div class="philosophy-pillar" style="--pillar-color: linear-gradient(90deg,#0ea5e9,#38bdf8);">
+                        <div class="philosophy-icon bg-sky-100">
+                            <svg class="w-6 h-6 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <strong class="text-slate-900 text-sm font-bold mb-1 block">Sterile Standards</strong>
+                        <p class="text-xs text-slate-500 leading-relaxed">Strict international infection control &amp; sterilization protocols on every case.</p>
+                    </div>
+
+                    <div class="philosophy-pillar" style="--pillar-color: linear-gradient(90deg,#10b981,#34d399);">
+                        <div class="philosophy-icon bg-emerald-100">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+                        <strong class="text-slate-900 text-sm font-bold mb-1 block">Accurate Diagnosis</strong>
+                        <p class="text-xs text-slate-500 leading-relaxed">Radiographic &amp; intraoral examination with comprehensive treatment planning.</p>
+                    </div>
+
+                    <div class="philosophy-pillar" style="--pillar-color: linear-gradient(90deg,#a855f7,#c084fc);">
+                        <div class="philosophy-icon bg-purple-100">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        </div>
+                        <strong class="text-slate-900 text-sm font-bold mb-1 block">Patient Comfort</strong>
+                        <p class="text-xs text-slate-500 leading-relaxed">Gentle, pain-managed treatment with a focus on patient experience and trust.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CLINICAL SKILLS — ACCORDION
+    ══════════════════════════════════════ -->
+    <section id="competencies" class="skills-accordion-section py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-14 reveal">
+                <div class="section-eyebrow justify-center">Core Competencies</div>
+                <h2 class="section-title">Clinical Procedures &amp; Key Skills</h2>
+                <p class="text-slate-500 text-sm mt-3 max-w-lg mx-auto">Click any procedure to explore the clinical workflow and view real case examples.</p>
+            </div>
+
+            <div class="accordion-wrapper reveal reveal-delay-1">
+
+                <!-- Left: Accordion List -->
+                <div class="accordion-list" id="accordion-list">
+
+                    <!-- 1. Endodontics -->
+                    <div class="accordion-item" data-skill="endodontics">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-icon bg-sky-100">
+                                <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <span class="acc-title">Endodontic Treatment (RCT)</span>
+                            <span class="acc-badge bg-sky-50 text-sky-700 border border-sky-200">Primary</span>
+                            <svg class="acc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="acc-steps">
+                                <li class="acc-step"><span class="acc-step-num">1</span> Rubber dam placement &amp; field isolation</li>
+                                <li class="acc-step"><span class="acc-step-num">2</span> Chemo-mechanical rotary shaping</li>
+                                <li class="acc-step"><span class="acc-step-num">3</span> Working length determination (apex locator)</li>
+                                <li class="acc-step"><span class="acc-step-num">4</span> Hermetic obturation (gutta-percha)</li>
+                            </ul>
+                            <a href="javascript:void(0)" class="acc-view-cases-btn" onclick="jumpToCasesFilter('endodontics')">
+                                View RCT Cases →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 2. Oral Surgery -->
+                    <div class="accordion-item" data-skill="surgery">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-icon bg-red-100">
+                                <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"/></svg>
+                            </div>
+                            <span class="acc-title">Simple &amp; Surgical Extractions</span>
+                            <span class="acc-badge bg-red-50 text-red-700 border border-red-200">Primary</span>
+                            <svg class="acc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="acc-steps">
+                                <li class="acc-step"><span class="acc-step-num">1</span> Local anesthesia &amp; patient prep</li>
+                                <li class="acc-step"><span class="acc-step-num">2</span> Soft tissue reflection &amp; bone assessment</li>
+                                <li class="acc-step"><span class="acc-step-num">3</span> Atraumatic tooth removal / root sectioning</li>
+                                <li class="acc-step"><span class="acc-step-num">4</span> Socket curettage &amp; suture placement</li>
+                            </ul>
+                            <a href="javascript:void(0)" class="acc-view-cases-btn" onclick="jumpToCasesFilter('surgery')">
+                                View Surgery Cases →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 3. Aesthetic Restorations -->
+                    <div class="accordion-item" data-skill="restorative">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-icon bg-emerald-100">
+                                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                            </div>
+                            <span class="acc-title">Aesthetic Composite Restorations</span>
+                            <span class="acc-badge bg-emerald-50 text-emerald-700 border border-emerald-200">Core</span>
+                            <svg class="acc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="acc-steps">
+                                <li class="acc-step"><span class="acc-step-num">1</span> Class I–V cavity preparation</li>
+                                <li class="acc-step"><span class="acc-step-num">2</span> Bonding agent &amp; nanocomposite layering</li>
+                                <li class="acc-step"><span class="acc-step-num">3</span> Anatomical carving &amp; occlusal adjustment</li>
+                                <li class="acc-step"><span class="acc-step-num">4</span> High-gloss finishing &amp; polishing</li>
+                            </ul>
+                            <a href="javascript:void(0)" class="acc-view-cases-btn" onclick="jumpToCasesFilter('restorative')">
+                                View Restoration Cases →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 4. Fixed Prosthodontics -->
+                    <div class="accordion-item" data-skill="fixed">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-icon bg-amber-100">
+                                <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.594 15.12a2 2 0 00-1.022.547l-1.42 1.42a2 2 0 00.586 3.414A19.855 19.855 0 0012 21c3.842 0 7.39-1.085 10.412-2.966a2 2 0 00.586-3.414l-1.42-1.42zM12 3a3 3 0 100 6 3 3 0 000-6z"/></svg>
+                            </div>
+                            <span class="acc-title">Fixed Prosthodontics</span>
+                            <span class="acc-badge bg-amber-50 text-amber-700 border border-amber-200">Core</span>
+                            <svg class="acc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="acc-steps">
+                                <li class="acc-step"><span class="acc-step-num">1</span> Abutment tooth preparation with chamfer margins</li>
+                                <li class="acc-step"><span class="acc-step-num">2</span> Elastomer impressions &amp; stone die fabrication</li>
+                                <li class="acc-step"><span class="acc-step-num">3</span> Crown / bridge try-in &amp; occlusal check</li>
+                                <li class="acc-step"><span class="acc-step-num">4</span> Final cementation</li>
+                            </ul>
+                            <a href="javascript:void(0)" class="acc-view-cases-btn" onclick="jumpToCasesFilter('fixed')">
+                                View Prostho Cases →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 5. Periodontics -->
+                    <div class="accordion-item" data-skill="perio">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-icon bg-purple-100">
+                                <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            </div>
+                            <span class="acc-title">Periodontal Scaling &amp; Root Planing</span>
+                            <span class="acc-badge bg-purple-50 text-purple-700 border border-purple-200">Core</span>
+                            <svg class="acc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="acc-steps">
+                                <li class="acc-step"><span class="acc-step-num">1</span> Periodontal charting &amp; probing</li>
+                                <li class="acc-step"><span class="acc-step-num">2</span> Ultrasonic supragingival scaling</li>
+                                <li class="acc-step"><span class="acc-step-num">3</span> Subgingival curettage &amp; root planing</li>
+                                <li class="acc-step"><span class="acc-step-num">4</span> Polish &amp; oral hygiene instruction</li>
+                            </ul>
+                            <a href="javascript:void(0)" class="acc-view-cases-btn" onclick="jumpToCasesFilter('perio')">
+                                View Perio Cases →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 6. Bleaching -->
+                    <div class="accordion-item" data-skill="bleaching">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-icon bg-indigo-100">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m9-9H3m15.364 6.364l-12.728-12.728m12.728 0L6.636 18.364"/></svg>
+                            </div>
+                            <span class="acc-title">In-Office Vital Tooth Bleaching</span>
+                            <span class="acc-badge bg-slate-100 text-slate-600 border border-slate-200">Cosmetic</span>
+                            <svg class="acc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="acc-steps">
+                                <li class="acc-step"><span class="acc-step-num">1</span> Pre-treatment shade recording (VITA scale)</li>
+                                <li class="acc-step"><span class="acc-step-num">2</span> Gingival barrier protection</li>
+                                <li class="acc-step"><span class="acc-step-num">3</span> Hydrogen peroxide gel application &amp; light activation</li>
+                                <li class="acc-step"><span class="acc-step-num">4</span> Post-treatment shade comparison</li>
+                            </ul>
+                            <a href="javascript:void(0)" class="acc-view-cases-btn" onclick="jumpToCasesFilter('bleaching')">
+                                View Bleaching Cases →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 7. Pediatrics -->
+                    <div class="accordion-item" data-skill="pediatric">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-icon bg-teal-100">
+                                <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <span class="acc-title">Pediatric Dental Care</span>
+                            <span class="acc-badge bg-slate-100 text-slate-600 border border-slate-200">Specialty</span>
+                            <svg class="acc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="acc-steps">
+                                <li class="acc-step"><span class="acc-step-num">1</span> Child behavior management (tell-show-do)</li>
+                                <li class="acc-step"><span class="acc-step-num">2</span> Pulpotomy on primary molars</li>
+                                <li class="acc-step"><span class="acc-step-num">3</span> Stainless Steel Crown (SSC) fitting</li>
+                                <li class="acc-step"><span class="acc-step-num">4</span> Space maintainer placement</li>
+                            </ul>
+                            <a href="javascript:void(0)" class="acc-view-cases-btn" onclick="jumpToCasesFilter('pediatric')">
+                                View Pediatric Cases →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 8. Radiographic Diagnosis -->
+                    <div class="accordion-item" data-skill="radiology">
+                        <button class="accordion-trigger" onclick="toggleAccordion(this)">
+                            <div class="acc-icon bg-blue-100">
+                                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2z"/></svg>
+                            </div>
+                            <span class="acc-title">Radiographic Diagnosis</span>
+                            <span class="acc-badge bg-slate-100 text-slate-600 border border-slate-200">Diagnostic</span>
+                            <svg class="acc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="accordion-body">
+                            <ul class="acc-steps">
+                                <li class="acc-step"><span class="acc-step-num">1</span> Digital periapical X-ray technique</li>
+                                <li class="acc-step"><span class="acc-step-num">2</span> Panoramic OPG interpretation</li>
+                                <li class="acc-step"><span class="acc-step-num">3</span> Periapical lesion &amp; bone level assessment</li>
+                                <li class="acc-step"><span class="acc-step-num">4</span> Apex identification &amp; working length</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: Spotlight Panel (desktop only) -->
+                <div class="skills-spotlight" id="skills-spotlight">
+                    <div class="spotlight-empty" id="spotlight-empty">
+                        <svg class="w-12 h-12 text-slate-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.594 15.12a2 2 0 00-1.022.547l-1.42 1.42a2 2 0 00.586 3.414A19.855 19.855 0 0012 21c3.842 0 7.39-1.085 10.412-2.966a2 2 0 00.586-3.414l-1.42-1.42zM12 3a3 3 0 100 6 3 3 0 000-6z"/></svg>
+                        <p class="text-slate-400 text-sm font-medium">Select a procedure<br>to see clinical details</p>
+                    </div>
+                    <div id="spotlight-content" class="hidden">
+                        <span class="spotlight-icon-large" id="spotlight-icon"></span>
+                        <h3 class="spotlight-title" id="spotlight-title"></h3>
+                        <p class="spotlight-desc" id="spotlight-desc"></p>
+                        <div class="spotlight-highlights" id="spotlight-highlights"></div>
+                        <a id="spotlight-cases-btn" class="acc-view-cases-btn" style="display:none;" onclick="">
+                            View Cases →
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CLINICAL CASES SECTION
+    ══════════════════════════════════════ -->
+    <section id="cases" class="cases-section py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 reveal">
+                <div>
+                    <div class="section-eyebrow">Real Case Portfolio</div>
+                    <h2 class="section-title">Clinical Work Showcase</h2>
+                </div>
+                <!-- Search -->
+                <div class="w-full md:w-80 relative">
+                    <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <input type="text" id="search-cases-input" placeholder="Search cases (e.g. RCT, Extraction)..." class="search-box pl-10">
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-2 mb-10 overflow-x-auto pb-2 reveal">
+                <button class="filter-tab active" data-filter="all">All Cases</button>
+                <button class="filter-tab" data-filter="endodontics">Endodontics (RCT)</button>
+                <button class="filter-tab" data-filter="surgery">Oral Surgery</button>
+                <button class="filter-tab" data-filter="restorative">Aesthetic Restorations</button>
+                <button class="filter-tab" data-filter="fixed">Fixed Prosthodontics</button>
+                <button class="filter-tab" data-filter="perio">Periodontics</button>
+                <button class="filter-tab" data-filter="bleaching">Bleaching</button>
+                <button class="filter-tab" data-filter="pediatric">Pediatrics</button>
+            </div>
+
+            <!-- Cases Grid -->
+            <div id="cases-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+            <!-- No Results -->
+            <div id="no-cases-found" class="hidden text-center py-20">
+                <div class="w-12 h-12 mx-auto mb-4 text-slate-400">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <h4 class="text-base font-bold text-slate-900 mb-1">No Clinical Cases Match Your Filter</h4>
+                <p class="text-xs text-slate-500">Try changing the category or search keywords.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         EDUCATION — TIMELINE
+    ══════════════════════════════════════ -->
+    <section id="education" class="education-timeline-section py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-16 reveal">
+                <div class="section-eyebrow justify-center">Qualifications</div>
+                <h2 class="section-title">Education &amp; Clinical Training</h2>
+            </div>
+
+            <div class="timeline-container">
+
+                <!-- Item 1: BDS (left side) -->
+                <div class="timeline-item reveal reveal-delay-1">
+                    <!-- Card (left) -->
+                    <div class="timeline-card">
+                        <div class="timeline-card-accent" style="background: linear-gradient(90deg, #0ea5e9, #38bdf8);"></div>
+                        <span class="timeline-card-tag bg-sky-50 text-sky-700 border border-sky-200">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                            Class of 2025
+                        </span>
+                        <h4 class="text-lg font-bold text-slate-900 mb-0.5">Bachelor of Dental Surgery</h4>
+                        <p class="timeline-institution text-sky-600 uppercase tracking-wider">Sinai University · Kantara Campus</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-xs text-slate-600">
+                                <span class="timeline-bullet bg-sky-400 mt-1.5"></span>
+                                Intensive clinical training in outpatient university dental clinics.
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-600">
+                                <span class="timeline-bullet bg-sky-400 mt-1.5"></span>
+                                Active participation in community dental health campaigns.
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-600">
+                                <span class="timeline-bullet bg-sky-400 mt-1.5"></span>
+                                Excellent academic standing with hands-on faculty supervision.
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Node -->
+                    <div class="timeline-node">
+                        <div class="timeline-dot" style="background:#0ea5e9;"></div>
+                        <span class="timeline-year-badge">2020–2025</span>
+                    </div>
+                    <!-- Spacer -->
+                    <div class="timeline-spacer hidden md:block"></div>
+                </div>
+
+                <!-- Item 2: MOH Internship (right side) -->
+                <div class="timeline-item reveal reveal-delay-2">
+                    <!-- Spacer -->
+                    <div class="timeline-spacer hidden md:block"></div>
+                    <!-- Node -->
+                    <div class="timeline-node">
+                        <div class="timeline-dot" style="background:#10b981;box-shadow:0 0 0 3px rgba(16,185,129,0.4),0 0 20px rgba(16,185,129,0.2);"></div>
+                        <span class="timeline-year-badge" style="color:#34d399;border-color:rgba(16,185,129,0.2);">2025–2026</span>
+                    </div>
+                    <!-- Card (right) -->
+                    <div class="timeline-card">
+                        <div class="timeline-card-accent" style="background: linear-gradient(90deg, #10b981, #34d399);"></div>
+                        <span class="timeline-card-tag bg-emerald-50 text-emerald-700 border border-emerald-200">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                            Active Intern
+                        </span>
+                        <h4 class="text-lg font-bold text-slate-900 mb-0.5">Dental Internship Program</h4>
+                        <p class="timeline-institution text-emerald-600 uppercase tracking-wider">Ministry of Health &amp; University Hospitals</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2 text-xs text-slate-600">
+                                <span class="timeline-bullet bg-emerald-400 mt-1.5"></span>
+                                Managing emergency dental trauma cases and general outpatient clinics.
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-600">
+                                <span class="timeline-bullet bg-emerald-400 mt-1.5"></span>
+                                Mastered clinical diagnosis and comprehensive treatment planning.
+                            </li>
+                            <li class="flex items-start gap-2 text-xs text-slate-600">
+                                <span class="timeline-bullet bg-emerald-400 mt-1.5"></span>
+                                Strict adherence to international sterilization and infection control standards.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Skills / Software Strip -->
+            <div class="skills-strip reveal">
+                <div class="skill-chip"><span class="skill-chip-dot bg-sky-500"></span>Arabic — Native</div>
+                <div class="skill-chip"><span class="skill-chip-dot bg-emerald-500"></span>English — Proficient</div>
+                <div class="skill-chip"><span class="skill-chip-dot bg-purple-500"></span>Digital Radiology</div>
+                <div class="skill-chip"><span class="skill-chip-dot bg-amber-500"></span>Apex Locator</div>
+                <div class="skill-chip"><span class="skill-chip-dot bg-indigo-500"></span>Rotary Endodontics</div>
+                <div class="skill-chip"><span class="skill-chip-dot bg-rose-500"></span>Ultrasonic Scaler</div>
+                <div class="skill-chip"><span class="skill-chip-dot bg-teal-500"></span>VITA Shade System</div>
+                <div class="skill-chip"><span class="skill-chip-dot bg-blue-500"></span>Elastomer Impressions</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CONTACT SECTION — DIGITAL HUB (NO FORM)
+    ══════════════════════════════════════ -->
+    <section id="contact" class="contact-section py-24">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-16 reveal">
+                <div class="section-eyebrow justify-center" style="color:#38bdf8;">Direct Clinical Inquiry</div>
+                <h2 class="section-title text-white">Get in Touch with Dr. Ahmed</h2>
+                <p class="text-sky-200/60 text-sm mt-3 max-w-xl mx-auto">Available for consultations, emergency dental cases, and professional inquiries in Sharqia and Cairo, Egypt.</p>
+            </div>
+
+            <!-- 3 Digital Contact Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+
+                <!-- 1. WhatsApp Card -->
+                <div class="contact-hub-card reveal reveal-delay-1" style="--card-glow: linear-gradient(90deg, #10b981, #34d399);">
+                    <div>
+                        <div class="contact-hub-icon" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#34d399;">
+                            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.205 1.624zm6.202-3.473l.352.209c1.55.92 3.327 1.408 5.15 1.409 5.418 0 9.825-4.406 9.828-9.825.002-2.624-1.02-5.093-2.876-6.949-1.856-1.856-4.324-2.877-6.953-2.877-5.418 0-9.826 4.407-9.828 9.827-.001 1.884.53 3.719 1.536 5.313l.23.364-1.01 3.687 3.771-.988z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-1 block">Fastest Response</span>
+                        <h3 class="text-xl font-bold text-white mb-2">WhatsApp Direct Chat</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Send clinical photos, X-rays, or request immediate consultation availability directly via WhatsApp.
+                        </p>
+                    </div>
+                    <a href="https://wa.me/201107755211" target="_blank" rel="noopener noreferrer"
+                       class="contact-hub-btn" style="background:linear-gradient(135deg,#10b981,#059669);">
+                        <span>Chat on WhatsApp</span> ↗
+                    </a>
+                </div>
+
+                <!-- 2. Phone Card -->
+                <div class="contact-hub-card reveal reveal-delay-2" style="--card-glow: linear-gradient(90deg, #0ea5e9, #38bdf8);">
+                    <div>
+                        <div class="contact-hub-icon" style="background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.3);color:#38bdf8;">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-sky-400 mb-1 block">Direct Line</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Phone Call</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Available for urgent clinical consultations, emergency dental trauma, and hospital rotation inquiries.
+                        </p>
+                    </div>
+                    <a href="tel:+201107755211"
+                       class="contact-hub-btn" style="background:linear-gradient(135deg,#0ea5e9,#0284c7);">
+                        <span>Call +20 1107755211</span> ↗
+                    </a>
+                </div>
+
+                <!-- 3. Email Card -->
+                <div class="contact-hub-card reveal reveal-delay-3" style="--card-glow: linear-gradient(90deg, #a855f7, #c084fc);">
+                    <div>
+                        <div class="contact-hub-icon" style="background:rgba(168,85,247,0.15);border:1px solid rgba(168,85,247,0.3);color:#c084fc;">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-purple-400 mb-1 block">Academic &amp; Hospital</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Email Correspondence</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                            Official inquiries, patient records, and institutional documentation sent directly to University mail.
+                        </p>
+                    </div>
+                    <a href="mailto:a.mohamed6388@su.edu.eg"
+                       class="contact-hub-btn" style="background:linear-gradient(135deg,#a855f7,#7e22ce);">
+                        <span>Send Email</span> ↗
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Bottom Location & Info Banner -->
+            <div class="contact-banner-strip reveal">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left items-center">
+                    
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-lg font-bold">
+                            <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-sky-400/80">Clinical Location</div>
+                            <div class="text-white font-bold text-sm">Sharqia / Cairo, Egypt</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg font-bold">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-400/80">Guaranteed Response</div>
+                            <div class="text-white font-bold text-sm">Within 24 Hours</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center md:justify-start gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-lg font-bold">
+                            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-amber-400/80">Clinical Duty</div>
+                            <div class="text-white font-bold text-sm">Sat – Thu (Emergency 24/7)</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CASE MODAL
+    ══════════════════════════════════════ -->
+    <div id="case-modal" class="fixed inset-0 z-50 hidden modal-overlay items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div id="case-modal-content" class="w-full flex justify-center">
+            <!-- Dynamically rendered -->
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         FOOTER
+    ══════════════════════════════════════ -->
+    <footer class="site-footer py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <!-- Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg overflow-hidden border border-sky-400/30 bg-slate-900/80 p-0.5 flex items-center justify-center">
+                        <img src="assets/img/logo-Photoroom(1).png" alt="Dr. Ahmed Abdelrahim Logo" class="w-full h-full object-contain" />
+                    </div>
+                    <div>
+                        <div class="text-white/80 text-sm font-semibold">Dr. Ahmed Abdelrahim Abdelatif</div>
+                        <div class="text-white/30 text-xs">© 2026 · All rights reserved</div>
+                    </div>
+                </div>
+                <!-- Links -->
+                <div class="flex items-center gap-6">
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#competencies" class="footer-link">Skills</a>
+                    <a href="#cases" class="footer-link">Cases</a>
+                    <a href="#education" class="footer-link">Education</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/cases-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/ui-enhancements.js"></script>
+</body>
+</html>
