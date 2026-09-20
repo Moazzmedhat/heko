@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal — Case Management | Dr. Ahmed Abdelrahim</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#14b8a6',
+                        dark: '#020617',
+                        card: 'rgba(15, 23, 42, 0.75)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        body {
+            background-color: #020617;
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        .admin-glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(14, 165, 233, 0.18);
+            border-radius: 1rem;
+        }
+        .admin-input {
+            background: rgba(2, 6, 23, 0.75);
+            border: 1px solid rgba(51, 65, 85, 0.8);
+            border-radius: 0.5rem;
+            color: #fff;
+            padding: 0.65rem 0.875rem;
+            font-size: 0.825rem;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        .admin-input:focus {
+            outline: none;
+            border-color: #0ea5e9;
+            box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.25);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- ══════════════════════════════════════
+         LOGIN GATE MODAL (PIN VERIFICATION)
+    ══════════════════════════════════════ -->
+    <div id="auth-gate" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/95 backdrop-blur-md p-4">
+        <div class="admin-glass-card max-w-md w-full p-8 text-center shadow-2xl relative border-sky-500/30">
+            <div class="w-14 h-14 rounded-2xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center mx-auto mb-4 text-sky-400">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            
+            <h2 class="text-xl font-bold text-white mb-1">Doctor Portal Login</h2>
+            <p class="text-xs text-slate-400 mb-6">Dr. Ahmed Abdelrahim — Clinical Case Management</p>
+
+            <form id="login-form" class="space-y-4" onsubmit="handleDoctorLogin(event)">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 text-left mb-1.5">Doctor Access PIN / كلمة المرور</label>
+                    <input type="password" id="admin-pin" placeholder="Enter PIN (Default: 2025)" required 
+                           class="admin-input text-center text-base tracking-widest font-mono" autofocus />
+                </div>
+                <div id="login-error" class="hidden text-xs text-rose-400 font-semibold text-center">
+                    Incorrect PIN. Please try again.
+                </div>
+                <button type="submit" class="w-full py-2.5 rounded-lg bg-gradient-to-r from-sky-500 to-teal-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-sky-500/25 transition-transform hover:scale-[1.02]">
+                    Verify &amp; Enter Portal
+                </button>
+            </form>
+            <div class="mt-4 pt-4 border-t border-slate-800 text-center">
+                <a href="index.html" class="text-xs text-slate-500 hover:text-slate-300 transition-colors">← Return to Public Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         MAIN DASHBOARD
+    ══════════════════════════════════════ -->
+    <div id="admin-dashboard" class="hidden flex-1 flex flex-col">
+        
+        <!-- Top Nav -->
+        <header class="border-b border-slate-800 bg-slate-900/70 backdrop-blur sticky top-0 z-30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-sky-500 to-teal-500 flex items-center justify-center text-white font-bold text-sm shadow">
+                        A
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-white leading-tight">Dr. Ahmed Abdelrahim</div>
+                        <div class="text-[10px] text-sky-400 font-medium">Case Management Portal · Cloud Synced</div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Live Supabase Connected
+                    </div>
+                    <a href="index.html" target="_blank" class="px-3 py-1.5 rounded-lg border border-slate-700 text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        <span>View Portfolio</span>
+                    </a>
+                    <button onclick="handleLogout()" class="px-3 py-1.5 rounded-lg border border-rose-500/30 text-xs font-semibold text-rose-400 hover:bg-rose-500/10 transition-colors">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body Content -->
+        <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+            
+            <!-- Welcome & Stats Banner -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                <div class="admin-glass-card p-5">
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Total Published Cases</div>
+                    <div id="stat-total-cases" class="text-3xl font-black text-white">--</div>
+                    <div class="text-[11px] text-sky-400 mt-1">Live in patient portfolio</div>
+                </div>
+                <div class="admin-glass-card p-5">
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Endodontics (RCT)</div>
+                    <div id="stat-endo-cases" class="text-3xl font-black text-sky-400">--</div>
+                    <div class="text-[11px] text-slate-500 mt-1">Root canal therapies</div>
+                </div>
+                <div class="admin-glass-card p-5">
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">Aesthetic Restorations</div>
+                    <div id="stat-resto-cases" class="text-3xl font-black text-emerald-400">--</div>
+                    <div class="text-[11px] text-slate-500 mt-1">Composite &amp; veneers</div>
+                </div>
+                <div class="admin-glass-card p-5 flex flex-col justify-between">
+                    <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Quick Actions</div>
+                    <button onclick="openAddCaseModal()" class="w-full mt-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-sky-500 to-teal-500 text-white font-bold text-xs tracking-wider shadow-lg hover:shadow-sky-500/25 transition-transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        <span>Add New Case</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Management Section -->
+            <div class="admin-glass-card p-6">
+                
+                <!-- Controls Header -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                    <div>
+                        <h2 class="text-lg font-bold text-white">Clinical Case Repository</h2>
+                        <p class="text-xs text-slate-400">Add, edit, or remove clinical documentation displayed on your website.</p>
+                    </div>
+
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                        <!-- Search -->
+                        <div class="relative flex-1 sm:w-64">
+                            <input type="text" id="admin-search" placeholder="Search cases or diagnosis..." oninput="handleAdminSearch(this.value)"
+                                   class="admin-input pl-8 py-2 text-xs" />
+                            <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+
+                        <!-- Sync Default Cases Button (if database is fresh) -->
+                        <button id="btn-seed" onclick="handleSeedInitialCases()" title="Copy default cases into your Supabase database"
+                                class="px-3 py-2 rounded-lg border border-slate-700 hover:border-sky-500/40 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/70 transition-colors whitespace-nowrap flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                            <span>Seed Defaults</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Case Cards Grid -->
+                <div id="admin-cases-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+                    <div class="col-span-full text-center py-12 text-slate-500 text-sm">
+                        Loading cases from Supabase...
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         ADD / EDIT CASE MODAL (COMPACT & OPTIMIZED)
+    ══════════════════════════════════════ -->
+    <div id="case-editor-modal" class="fixed inset-0 z-50 hidden modal-overlay items-center justify-center p-3 sm:p-4 overflow-y-auto bg-slate-950/80 backdrop-blur-sm">
+        <div class="admin-glass-card max-w-2xl w-full p-5 sm:p-6 my-auto relative shadow-2xl border-sky-500/30 max-h-[92vh] flex flex-col">
+            
+            <!-- Compact Header -->
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 flex-shrink-0">
+                <div>
+                    <h3 id="modal-title" class="text-base sm:text-lg font-bold text-white leading-tight">Add Clinical Case</h3>
+                    <p class="text-[11px] text-slate-400">Fill in case details and attach clinical photos.</p>
+                </div>
+                <button onclick="closeCaseModal()" class="w-7 h-7 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center text-sm font-bold transition-colors">&times;</button>
+            </div>
+
+            <!-- Form -->
+            <form id="case-form" onsubmit="handleSaveCase(event)" class="space-y-3 overflow-y-auto pr-1 flex-1">
+                <input type="hidden" id="case-edit-id" value="" />
+
+                <!-- Row 1: Case Title & Category -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <div class="sm:col-span-2">
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Case Title / عنوان الحالة *</label>
+                        <input type="text" id="case-title" required placeholder="e.g. Multi-Canal Root Canal Treatment & Obturation" class="admin-input" />
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Category / التصنيف *</label>
+                        <select id="case-category" required class="admin-input">
+                            <option value="endodontics">Endodontics (RCT)</option>
+                            <option value="restorative">Aesthetics &amp; Restorative</option>
+                            <option value="surgery">Oral Surgery</option>
+                            <option value="prosthodontics">Fixed Prosthodontics</option>
+                            <option value="whitening">Teeth Whitening</option>
+                            <option value="pediatric">Pediatric Dentistry</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Row 2: Tooth Location, Diagnosis, Treatment Date -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Tooth / رقم أو موضع السن *</label>
+                        <input type="text" id="case-tooth" required placeholder="e.g. Mandibular Molar (#36)" class="admin-input" />
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Diagnosis / التشخيص الطبي *</label>
+                        <input type="text" id="case-diagnosis" required placeholder="e.g. Irreversible Pulpitis" class="admin-input" />
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Treatment Date / التاريخ *</label>
+                        <input type="text" id="case-date" required placeholder="e.g. March 2026" class="admin-input" />
+                    </div>
+                </div>
+
+                <!-- Row 3: Narrative / Objective -->
+                <div>
+                    <label class="block text-[11px] font-semibold text-slate-300 mb-1">Clinical Narrative &amp; Objective / تفاصيل وخطة العلاج *</label>
+                    <textarea id="case-description" rows="2" required placeholder="Describe clinical presentation, isolation technique, rotary shaping, and seal..." class="admin-input leading-relaxed"></textarea>
+                </div>
+
+                <!-- Row 4: Highlights & Tags -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Clinical Highlights (Comma separated)</label>
+                        <input type="text" id="case-highlights" placeholder="Rubber dam, Apical seal, Biocompatible" class="admin-input" />
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-300 mb-1">Tags (Comma separated)</label>
+                        <input type="text" id="case-tags" placeholder="RCT, Rotary, X-Ray" class="admin-input" />
+                    </div>
+                </div>
+
+                <!-- Row 5: Multi-Photo Upload & Preview -->
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label class="block text-[11px] font-semibold text-slate-300">
+                            Clinical Photos / صور الحالة *
+                            <span class="text-slate-400 font-normal text-[10px]">(Pre-op, X-rays, Post-op)</span>
+                        </label>
+                        <span id="photo-count-badge" class="text-[10px] text-sky-400 font-semibold">0 Photos attached</span>
+                    </div>
+                    
+                    <div class="border border-dashed border-slate-700 hover:border-sky-500/50 rounded-lg p-2.5 text-center cursor-pointer transition-colors bg-slate-950/40 relative group flex items-center justify-center gap-2"
+                         onclick="document.getElementById('case-file-input').click()">
+                        <input type="file" id="case-file-input" accept="image/*" multiple class="hidden" onchange="handleMultipleImagesSelected(event)" />
+                        <svg class="w-5 h-5 text-sky-400 flex-shrink-0 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <span class="text-xs font-semibold text-white">Click or drag photos here to attach</span>
+                        <span class="text-[10px] text-slate-400 hidden sm:inline">(JPG, PNG, WEBP — auto-optimized)</span>
+                    </div>
+
+                    <!-- Uploaded Photos Gallery Preview Grid -->
+                    <div id="photos-preview-container" class="hidden mt-2 space-y-1.5">
+                        <div class="text-[10px] text-slate-400 flex items-center justify-between">
+                            <span>Attached photos (First photo is cover thumbnail):</span>
+                            <button type="button" onclick="document.getElementById('case-file-input').click()" class="text-sky-400 hover:text-sky-300 font-semibold text-[10px]">
+                                + Add More Photos
+                            </button>
+                        </div>
+                        <div id="photos-thumbnail-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-2 max-h-36 overflow-y-auto p-1">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Actions -->
+                <div class="flex items-center justify-end gap-2.5 pt-2.5 mt-1 border-t border-slate-800 flex-shrink-0">
+                    <button type="button" onclick="closeCaseModal()" class="px-3.5 py-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+                        Cancel
+                    </button>
+                    <button type="submit" id="btn-submit-case" class="px-5 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-teal-500 text-white font-bold text-xs tracking-wide shadow-md hover:shadow-sky-500/25 transition-transform hover:scale-[1.01] flex items-center gap-2">
+                        <span id="btn-submit-text">Publish Case to Website</span>
+                        <svg id="btn-submit-spinner" class="hidden w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         SCRIPTS
+    ══════════════════════════════════════ -->
+    <!-- Supabase Official JS SDK from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Supabase Config & Data Helpers -->
+    <script src="js/cases-data.js"></script>
+    <script src="js/supabase-config.js"></script>
+    
+    <!-- Admin Portal Logic -->
+    <script>
+        const ADMIN_PIN = '2025'; // Default PIN for Dr. Ahmed
+        let allCases = [];
+
+        // Check authentication on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('dr_ahmed_admin_auth') === 'true') {
+                showDashboard();
+            } else {
+                document.getElementById('auth-gate').classList.remove('hidden');
+                document.getElementById('admin-dashboard').classList.add('hidden');
+            }
+        });
+
+        function handleDoctorLogin(e) {
+            e.preventDefault();
+            const pin = document.getElementById('admin-pin').value.trim();
+            if (pin === ADMIN_PIN || pin === 'ahmed2025') {
+                sessionStorage.setItem('dr_ahmed_admin_auth', 'true');
+                showDashboard();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('dr_ahmed_admin_auth');
+            location.reload();
+        }
+
+        async function showDashboard() {
+            document.getElementById('auth-gate').classList.add('hidden');
+            document.getElementById('admin-dashboard').classList.remove('hidden');
+            await loadAndRenderAdminCases();
+        }
+
+        async function loadAndRenderAdminCases() {
+            const container = document.getElementById('admin-cases-container');
+            container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400 text-sm">Connecting to Supabase and retrieving cases...</div>`;
+
+            try {
+                const cases = await fetchSupabaseCases();
+                if (cases && cases.length > 0) {
+                    allCases = cases;
+                } else {
+                    // Fallback to local cases if Supabase is fresh
+                    allCases = (typeof clinicalCases !== 'undefined') ? clinicalCases : [];
+                }
+                renderCaseCards(allCases);
+                updateStats(allCases);
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = `<div class="col-span-full text-center py-12 text-rose-400 text-sm">Failed to load cases from database.</div>`;
+            }
+        }
+
+        function updateStats(cases) {
+            document.getElementById('stat-total-cases').textContent = cases.length;
+            document.getElementById('stat-endo-cases').textContent = cases.filter(c => c.category === 'endodontics').length;
+            document.getElementById('stat-resto-cases').textContent = cases.filter(c => c.category === 'restorative').length;
+        }
+
+        function renderCaseCards(cases) {
+            const container = document.getElementById('admin-cases-container');
+            if (cases.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-slate-900/40 rounded-xl border border-slate-800">
+                        <div class="text-slate-400 text-sm mb-2">No clinical cases found in database.</div>
+                        <p class="text-xs text-slate-500 mb-4">Click "Seed Defaults" to import your initial 6 cases, or "+ Add New Case" to create one.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = '';
+            cases.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-900/90 border border-slate-800 rounded-xl overflow-hidden flex flex-col justify-between hover:border-slate-700 transition-all';
+                card.innerHTML = `
+                    <div>
+                        <div class="h-44 bg-slate-950 overflow-hidden relative">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" />
+                            <div class="absolute top-2.5 right-2.5 flex items-center gap-1.5">
+                                ${(item.images && item.images.length > 1) ? `
+                                    <span class="px-2 py-0.5 text-[10px] font-bold rounded-md bg-slate-900/90 text-teal-300 border border-teal-500/30 flex items-center gap-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                        ${item.images.length} Photos
+                                    </span>
+                                ` : ''}
+                                <span class="px-2.5 py-0.5 text-[10px] font-bold rounded-md bg-slate-900/90 text-sky-400 border border-sky-500/30">
+                                    ${item.categoryName || item.category}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-[11px] font-mono text-slate-400 mb-1">${item.tooth} · ${item.date}</div>
+                            <h4 class="text-sm font-bold text-white mb-2 line-clamp-1">${item.title}</h4>
+                            <div class="text-xs text-sky-400 font-semibold mb-2 line-clamp-1">${item.diagnosis}</div>
+                            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${item.description}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0 border-t border-slate-800/80 flex items-center justify-between gap-2 mt-2">
+                        <span class="text-[10px] text-slate-500 font-mono">${item.id}</span>
+                        <div class="flex items-center gap-2">
+                            <button onclick="openEditCaseModal('${item.id}')" class="px-3 py-1.5 text-xs font-semibold text-sky-400 hover:text-white hover:bg-sky-500/10 rounded-lg transition-colors">
+                                Edit
+                            </button>
+                            <button onclick="handleDeleteCase('${item.id}', '${item.title.replace(/'/g, "\\'")}')" class="px-3 py-1.5 text-xs font-semibold text-rose-400 hover:text-white hover:bg-rose-500/10 rounded-lg transition-colors">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function handleAdminSearch(q) {
+            const val = q.toLowerCase();
+            const filtered = allCases.filter(c => 
+                c.title.toLowerCase().includes(val) ||
+                c.diagnosis.toLowerCase().includes(val) ||
+                c.tooth.toLowerCase().includes(val) ||
+                c.category.toLowerCase().includes(val)
+            );
+            renderCaseCards(filtered);
+        }
+
+        // Multi-image state & helper
+        let currentCaseImages = [];
+
+        function compressImageFile(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onerror = reject;
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onerror = reject;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const MAX_WIDTH = 1200;
+                        const scaleSize = (img.width > MAX_WIDTH) ? (MAX_WIDTH / img.width) : 1;
+                        canvas.width = (img.width > MAX_WIDTH) ? MAX_WIDTH : img.width;
+                        canvas.height = (img.width > MAX_WIDTH) ? Math.round(img.height * scaleSize) : img.height;
+
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        const compressedBase64 = canvas.toDataURL('image/jpeg', 0.82);
+                        resolve(compressedBase64);
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function handleMultipleImagesSelected(e) {
+            const files = Array.from(e.target.files || []);
+            if (files.length === 0) return;
+
+            const badge = document.getElementById('photo-count-badge');
+            if (badge) badge.textContent = `Optimizing ${files.length} photo(s)...`;
+
+            for (const file of files) {
+                try {
+                    const base64 = await compressImageFile(file);
+                    currentCaseImages.push(base64);
+                } catch (err) {
+                    console.error('Failed to compress image:', file.name, err);
+                }
+            }
+
+            e.target.value = '';
+            renderImagePreviews();
+        }
+
+        function renderImagePreviews() {
+            const container = document.getElementById('photos-preview-container');
+            const grid = document.getElementById('photos-thumbnail-grid');
+            const badge = document.getElementById('photo-count-badge');
+            if (!container || !grid) return;
+
+            if (currentCaseImages.length === 0) {
+                container.classList.add('hidden');
+                if (badge) badge.textContent = '0 Photos attached';
+                return;
+            }
+
+            container.classList.remove('hidden');
+            if (badge) {
+                badge.textContent = `${currentCaseImages.length} Photo${currentCaseImages.length > 1 ? 's' : ''} attached`;
+            }
+
+            grid.innerHTML = '';
+            currentCaseImages.forEach((imgSrc, idx) => {
+                const thumb = document.createElement('div');
+                thumb.className = `relative rounded-lg overflow-hidden border ${idx === 0 ? 'border-sky-400 ring-2 ring-sky-400/30' : 'border-slate-800'} bg-slate-900 flex flex-col justify-between`;
+                thumb.innerHTML = `
+                    <div class="h-24 bg-slate-950 overflow-hidden flex items-center justify-center">
+                        <img src="${imgSrc}" alt="Case photo ${idx + 1}" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="absolute top-1 left-1">
+                        ${idx === 0 
+                            ? `<span class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-sky-500 text-white shadow">Cover</span>`
+                            : `<button type="button" onclick="makeCoverImage(${idx})" title="Set as cover photo" class="px-1.5 py-0.5 text-[9px] font-semibold rounded bg-slate-900/90 text-slate-300 hover:text-white hover:bg-sky-600 border border-slate-700 transition-colors">Make Cover</button>`
+                        }
+                    </div>
+                    <button type="button" onclick="removeImageAt(${idx})" title="Remove photo" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-slate-900/90 hover:bg-rose-600 text-slate-300 hover:text-white flex items-center justify-center text-xs font-bold transition-colors">
+                        &times;
+                    </button>
+                    <div class="py-0.5 px-1 bg-slate-950/90 text-[10px] text-slate-400 font-mono text-center border-t border-slate-800">
+                        Photo #${idx + 1}
+                    </div>
+                `;
+                grid.appendChild(thumb);
+            });
+        }
+
+        function makeCoverImage(idx) {
+            if (idx <= 0 || idx >= currentCaseImages.length) return;
+            const chosen = currentCaseImages.splice(idx, 1)[0];
+            currentCaseImages.unshift(chosen);
+            renderImagePreviews();
+        }
+
+        function removeImageAt(idx) {
+            if (idx < 0 || idx >= currentCaseImages.length) return;
+            currentCaseImages.splice(idx, 1);
+            renderImagePreviews();
+        }
+
+        function openAddCaseModal() {
+            document.getElementById('modal-title').textContent = 'Add Clinical Case';
+            document.getElementById('case-edit-id').value = '';
+            document.getElementById('case-form').reset();
+            currentCaseImages = [];
+            renderImagePreviews();
+
+            document.getElementById('btn-submit-text').textContent = 'Publish Case to Website';
+            document.getElementById('case-editor-modal').classList.remove('hidden');
+            document.getElementById('case-editor-modal').classList.add('flex');
+        }
+
+        function openEditCaseModal(id) {
+            const c = allCases.find(item => item.id === id);
+            if (!c) return;
+
+            document.getElementById('modal-title').textContent = 'Edit Clinical Case';
+            document.getElementById('case-edit-id').value = c.id;
+            document.getElementById('case-title').value = c.title || '';
+            document.getElementById('case-category').value = c.category || 'endodontics';
+            document.getElementById('case-tooth').value = c.tooth || '';
+            document.getElementById('case-diagnosis').value = c.diagnosis || '';
+            document.getElementById('case-date').value = c.date || '';
+            document.getElementById('case-description').value = c.description || '';
+
+            // Populate images
+            if (Array.isArray(c.images) && c.images.length > 0) {
+                currentCaseImages = [...c.images];
+            } else if (c.image) {
+                if (typeof c.image === 'string' && c.image.trim().startsWith('[') && c.image.trim().endsWith(']')) {
+                    try {
+                        currentCaseImages = JSON.parse(c.image);
+                    } catch(e) {
+                        currentCaseImages = [c.image];
+                    }
+                } else {
+                    currentCaseImages = [c.image];
+                }
+            } else {
+                currentCaseImages = [];
+            }
+            renderImagePreviews();
+
+            // Highlights & Tags
+            document.getElementById('case-highlights').value = Array.isArray(c.highlights) ? c.highlights.join(', ') : '';
+            document.getElementById('case-tags').value = Array.isArray(c.tags) ? c.tags.join(', ') : '';
+
+            document.getElementById('btn-submit-text').textContent = 'Update Case';
+            document.getElementById('case-editor-modal').classList.remove('hidden');
+            document.getElementById('case-editor-modal').classList.add('flex');
+        }
+
+        function closeCaseModal() {
+            document.getElementById('case-editor-modal').classList.add('hidden');
+            document.getElementById('case-editor-modal').classList.remove('flex');
+        }
+
+        async function handleSaveCase(e) {
+            e.preventDefault();
+
+            if (currentCaseImages.length === 0) {
+                alert('Please upload at least one clinical photo for this case.');
+                return;
+            }
+
+            const submitBtn = document.getElementById('btn-submit-case');
+            const submitText = document.getElementById('btn-submit-text');
+            const spinner = document.getElementById('btn-submit-spinner');
+            submitBtn.disabled = true;
+            submitText.textContent = 'Saving to Supabase...';
+            spinner.classList.remove('hidden');
+
+            const editId = document.getElementById('case-edit-id').value;
+            const category = document.getElementById('case-category').value;
+            const categorySelect = document.getElementById('case-category');
+            const categoryName = categorySelect.options[categorySelect.selectedIndex].text.trim();
+
+            const highlightsStr = document.getElementById('case-highlights').value;
+            const highlights = highlightsStr.split(',').map(s => s.trim()).filter(Boolean);
+
+            const tagsStr = document.getElementById('case-tags').value;
+            const tags = tagsStr.split(',').map(s => s.trim()).filter(Boolean);
+
+            const casePayload = {
+                id: editId ? editId : 'case-' + Date.now(),
+                title: document.getElementById('case-title').value.trim(),
+                category: category,
+                categoryName: categoryName,
+                badgeColor: getBadgeColorForCategory(category),
+                tooth: document.getElementById('case-tooth').value.trim(),
+                diagnosis: document.getElementById('case-diagnosis').value.trim(),
+                date: document.getElementById('case-date').value.trim(),
+                description: document.getElementById('case-description').value.trim(),
+                image: currentCaseImages[0],
+                images: currentCaseImages,
+                procedureSteps: [],
+                highlights: highlights,
+                tags: tags,
+                author: 'Dr. Ahmed Abdelrahim'
+            };
+
+            try {
+                if (editId) {
+                    await updateSupabaseCase(editId, casePayload);
+                } else {
+                    await createSupabaseCase(casePayload);
+                }
+                closeCaseModal();
+                await loadAndRenderAdminCases();
+                alert(editId ? 'Case successfully updated in Supabase!' : 'Case successfully published to website!');
+            } catch (err) {
+                console.error(err);
+                alert('Error saving case to database: ' + (err.message || err));
+            } finally {
+                submitBtn.disabled = false;
+                spinner.classList.add('hidden');
+                submitText.textContent = editId ? 'Update Case' : 'Publish Case to Website';
+            }
+        }
+
+        async function handleDeleteCase(id, title) {
+            if (!confirm(`Are you sure you want to delete "${title}"? This will remove it from the public website immediately.`)) {
+                return;
+            }
+
+            try {
+                await deleteSupabaseCase(id);
+                await loadAndRenderAdminCases();
+            } catch (err) {
+                console.error(err);
+                alert('Failed to delete case: ' + (err.message || err));
+            }
+        }
+
+        async function handleSeedInitialCases() {
+            if (!confirm('This will copy all default clinical cases into your Supabase database. Continue?')) {
+                return;
+            }
+
+            const btn = document.getElementById('btn-seed');
+            btn.disabled = true;
+            btn.innerHTML = '<span>Syncing...</span>';
+
+            try {
+                await seedDefaultCasesToSupabase();
+                await loadAndRenderAdminCases();
+                alert('Default cases synced successfully to Supabase!');
+            } catch (err) {
+                console.error(err);
+                alert('Failed to sync cases: ' + (err.message || err));
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `
+                    <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    <span>Seed Defaults</span>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

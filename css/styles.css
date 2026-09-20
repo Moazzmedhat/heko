@@ -1267,7 +1267,8 @@ body {
 }
 @media (max-width: 767px) {
   .timeline-container::before {
-    left: 1.5rem;
+    left: 1.25rem;
+    transform: none;
   }
 }
 
@@ -1281,8 +1282,19 @@ body {
 }
 @media (max-width: 767px) {
   .timeline-item {
-    grid-template-columns: 3rem 1fr;
+    grid-template-columns: 2.5rem 1fr;
     gap: 1rem;
+  }
+  .timeline-node {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .timeline-card {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .timeline-spacer {
+    display: none !important;
   }
 }
 
@@ -1327,7 +1339,12 @@ body {
   letter-spacing: 0.04em;
 }
 @media (max-width: 767px) {
-  .timeline-node { flex-direction: row; align-items: center; }
+  .timeline-node {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 0.25rem;
+  }
   .timeline-year-badge { display: none; }
 }
 
@@ -1546,4 +1563,441 @@ body {
   50% { opacity: 0.8; transform: translateY(3px); }
 }
 
+/* ============================================================
+   PATIENT REVIEWS & TESTIMONIALS SECTION
+   ============================================================ */
+.reviews-section {
+  position: relative;
+  background: linear-gradient(180deg, #020617 0%, #0b1528 50%, #020617 100%);
+  border-top: 1px solid rgba(14, 165, 233, 0.15);
+  border-bottom: 1px solid rgba(14, 165, 233, 0.15);
+  overflow: hidden;
+}
 
+.reviews-section::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  right: -10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.12), transparent 70%);
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+.reviews-section::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent 70%);
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+/* Summary Banner */
+.review-summary-box {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Review Card */
+.review-card {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.review-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0ea5e9, #10b981);
+  opacity: 0.5;
+  transition: opacity 0.35s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 15px 35px -10px rgba(14, 165, 233, 0.2);
+}
+
+.review-card:hover::before {
+  opacity: 1;
+}
+
+/* Quote Icon Decoration */
+.review-quote-icon {
+  display: none;
+}
+
+/* Verified Badge */
+.review-badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+/* Location Tag */
+.review-location-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Avatar Badge */
+.review-avatar-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9, #10b981);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+/* Rating Stars */
+.review-stars {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  color: #fbbf24;
+}
+
+.review-stars svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+  filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.5));
+}
+
+/* Interactive Review Form Rating Selector */
+.star-rating-selector {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.star-rating-selector button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.2s ease;
+  padding: 0.25rem;
+}
+
+.star-rating-selector button.active,
+.star-rating-selector button:hover,
+.star-rating-selector button.hovered {
+  color: #fbbf24;
+  transform: scale(1.2);
+}
+
+/* Leave a Review CTA Box */
+.review-cta-box {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(20, 184, 166, 0.15) 100%);
+  border: 1px dashed rgba(56, 189, 248, 0.35);
+  border-radius: 1.25rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.review-cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.1), transparent 70%);
+  pointer-events: none;
+}
+
+/* Clinical Case Multi-Photo Gallery */
+#gallery-active-image {
+  transition: opacity 0.15s ease, transform 0.2s ease;
+}
+
+.gallery-thumb-btn {
+  outline: none;
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+.gallery-thumb-btn:focus-visible {
+  ring: 2px solid var(--sky-400);
+}
+
+/* ══════════════════════════════════════════
+   GLOBAL RESPONSIVENESS ENHANCEMENTS (ALL DEVICES)
+══════════════════════════════════════════ */
+
+/* Prevent horizontal overflow on any device */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Touch targets and smooth interaction */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Base image safety */
+img, svg, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Hero section adjustments on tablets and phones */
+@media (max-width: 1023px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 5.5rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Clean nav bar height & spacing */
+  .clean-nav .h-20 {
+    height: 4.5rem;
+  }
+
+  /* Hero Typography & Spacing */
+  .hero-title {
+    font-size: 2.25rem !important;
+    line-height: 1.15;
+  }
+
+  .hero-badge {
+    font-size: 0.68rem;
+    padding: 0.35rem 0.75rem;
+    white-space: normal;
+    text-align: left;
+    max-width: 100%;
+    line-height: 1.35;
+  }
+
+  /* Hero Stats Grid */
+  .hero-stats-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .hero-stat-card {
+    padding: 0.75rem 0.35rem;
+    border-radius: 0.75rem;
+  }
+
+  .hero-stat-value {
+    font-size: 1.15rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.62rem;
+  }
+
+  /* Hero CTA buttons full width on small screens */
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.625rem;
+  }
+
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.78rem;
+  }
+
+  /* Hero Doctor Photo Badge */
+  .hero-photo-badge {
+    position: static;
+    transform: none;
+    margin-top: 0.75rem;
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .hero-photo-badge .text-white {
+    font-size: 0.8rem;
+  }
+
+  .hero-photo-badge .text-sky-400 {
+    font-size: 0.7rem;
+  }
+
+  /* Sections padding */
+  .about-pillars-section,
+  .skills-accordion-section,
+  .cases-section,
+  .education-timeline-section,
+  .reviews-section,
+  .contact-section {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  /* Section Headings */
+  .section-title {
+    font-size: 1.65rem !important;
+    line-height: 1.25;
+  }
+
+  /* About Stat Cards */
+  .about-stat-card {
+    padding: 1rem 0.5rem;
+    border-radius: 0.875rem;
+  }
+
+  .about-stat-number {
+    font-size: 1.45rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.65rem;
+  }
+
+  /* Timeline Mobile — force correct column placement regardless of DOM order */
+
+  /* Always put the node in the first (narrow) column */
+  .timeline-node {
+    grid-column: 1;
+    grid-row: 1;
+    order: 1;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Always put the card in the second (wide) column */
+  .timeline-card {
+    grid-column: 2;
+    grid-row: 1;
+    order: 2;
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  /* Always hide the spacer on mobile */
+  .timeline-spacer {
+    display: none !important;
+  }
+
+  .timeline-dot {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  /* Filter Tabs scrollbar */
+  .filter-tab {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.7rem;
+  }
+
+  /* Review Summary Box */
+  .review-summary-box {
+    padding: 1.25rem;
+    border-radius: 1rem;
+  }
+
+  /* Contact Hub Cards */
+  .contact-hub-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  .contact-hub-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    font-size: 1.35rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Contact Bottom Banner */
+  .contact-banner-strip {
+    padding: 1.25rem 1rem;
+    border-radius: 1rem;
+  }
+
+  /* Clinical Card */
+  .case-img-wrapper {
+    height: 200px;
+  }
+}
+
+/* Extra small mobile phones (e.g. iPhone SE, 320px - 380px) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.85rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 0.825rem !important;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+
+  .hero-stat-value {
+    font-size: 0.95rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.58rem;
+  }
+
+  .about-stat-number {
+    font-size: 1.25rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.6rem;
+  }
+
+  .case-img-wrapper {
+    height: 180px;
+  }
+}
